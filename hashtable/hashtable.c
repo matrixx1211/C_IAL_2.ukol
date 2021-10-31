@@ -130,6 +130,7 @@ void ht_delete(ht_table_t *table, char *key)
       prev_item->next = next_item;
       return;
     }
+    prev_item = item;
     item = item->next;
   }
 }

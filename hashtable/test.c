@@ -64,7 +64,7 @@ INSERT_TEST_DATA(test_table)
 ht_get(test_table, "Ethereum");
 ENDTEST
 
-TEST(test_delete, "Delete an item")
+TEST(test_delete, "Delete an item - Terra")
 ht_init(test_table);
 INSERT_TEST_DATA(test_table)
 ht_delete(test_table, "Terra");
