@@ -80,10 +80,10 @@ void bst_insert(bst_node_t **tree, char key, int value)
   }                                                //
   if ((*tree)->key > key)                          //pokud je klíč v listu větší než klíč
   {                                                //
-    bst_insert(&(*tree)->left, key, value);         //rekurzivní volání vložení pro levého potomka
+    bst_insert(&(*tree)->left, key, value);        //rekurzivní volání vložení pro levého potomka
     return;                                        //ukončení fce
   }                                                //
-  bst_insert(&(*tree)->right, key, value);          //rekurzivní volání vložení pro pravého potomka
+  bst_insert(&(*tree)->right, key, value);         //rekurzivní volání vložení pro pravého potomka
 }
 
 /*
@@ -101,6 +101,12 @@ void bst_insert(bst_node_t **tree, char key, int value)
  */
 void bst_replace_by_rightmost(bst_node_t *target, bst_node_t **tree)
 {
+  //target je ukazatel do stromu
+  bst_node_t node;
+  /* if ((*tree)->key == target->key)
+  {
+  }
+    bst_replace_by_rightmost(); */
 }
 
 /*
@@ -130,6 +136,13 @@ void bst_delete(bst_node_t **tree, char key)
  */
 void bst_dispose(bst_node_t **tree)
 {
+  if ((*tree) != NULL)
+  {
+    bst_dispose(&(*tree)->left);
+    bst_dispose(&(*tree)->right);
+    free((*tree));
+    (*tree) = NULL;
+  }
 }
 
 /*
@@ -141,6 +154,12 @@ void bst_dispose(bst_node_t **tree)
  */
 void bst_preorder(bst_node_t *tree)
 {
+  if (tree != NULL)
+  {
+    bst_print_node(tree);
+    bst_preorder(tree->left);
+    bst_preorder(tree->right);
+  }
 }
 
 /*
@@ -152,6 +171,12 @@ void bst_preorder(bst_node_t *tree)
  */
 void bst_inorder(bst_node_t *tree)
 {
+  if (tree != NULL)
+  {
+    bst_preorder(tree->left);
+    bst_print_node(tree);
+    bst_preorder(tree->right);
+  }
 }
 /*
  * Postorder prechod stromom.
@@ -162,4 +187,10 @@ void bst_inorder(bst_node_t *tree)
  */
 void bst_postorder(bst_node_t *tree)
 {
+  if (tree != NULL)
+  {
+    bst_preorder(tree->left);
+    bst_preorder(tree->right);
+    bst_print_node(tree);
+  }
 }

@@ -19,7 +19,9 @@
  * leak). Keďže neinicializovaný ukazovateľ má nedefinovanú hodnotu, nie je
  * možné toto detegovať vo funkcii.
  */
-void bst_init(bst_node_t **tree) {
+void bst_init(bst_node_t **tree)
+{
+  (*tree) = NULL;
 }
 
 /*
@@ -31,8 +33,31 @@ void bst_init(bst_node_t **tree) {
  *
  * Funkciu implementujte iteratívne bez použitia vlastných pomocných funkcií.
  */
-bool bst_search(bst_node_t *tree, char key, int *value) {
-  return false;
+bool bst_search(bst_node_t *tree, char key, int *value)
+{
+  if (tree == NULL)           //pokud není nic ve stromu
+  {                           //
+    return false;             //nic nenajdu
+  }                           //
+  else                        //jinak
+  {                           //
+    stack_bst_t stack;        //deklaruju si stack
+    stack_bst_init(&stack);   //inicialuzuju ho
+    while (true)              //zatímco něco existuje
+    {                         //
+      if (tree->key == key)   //pokud klíč v uzlu je stejný jako hledaný
+      {                       //
+        tree->value = *value; //nahradím hodnotu
+        return true;          //nalezeno
+      }                       //
+      if (tree->key > key)
+      {
+      tree->left
+        
+      }
+      
+    }                         //
+  }                           //
 }
 
 /*
@@ -46,7 +71,8 @@ bool bst_search(bst_node_t *tree, char key, int *value) {
  *
  * Funkciu implementujte iteratívne bez použitia vlastných pomocných funkcií.
  */
-void bst_insert(bst_node_t **tree, char key, int value) {
+void bst_insert(bst_node_t **tree, char key, int value)
+{
 }
 
 /*
@@ -62,7 +88,8 @@ void bst_insert(bst_node_t **tree, char key, int value) {
  *
  * Funkciu implementujte iteratívne bez použitia vlastných pomocných funkcií.
  */
-void bst_replace_by_rightmost(bst_node_t *target, bst_node_t **tree) {
+void bst_replace_by_rightmost(bst_node_t *target, bst_node_t **tree)
+{
 }
 
 /*
@@ -77,7 +104,8 @@ void bst_replace_by_rightmost(bst_node_t *target, bst_node_t **tree) {
  * Funkciu implementujte iteratívne pomocou bst_replace_by_rightmost a bez
  * použitia vlastných pomocných funkcií.
  */
-void bst_delete(bst_node_t **tree, char key) {
+void bst_delete(bst_node_t **tree, char key)
+{
 }
 
 /*
@@ -90,7 +118,8 @@ void bst_delete(bst_node_t **tree, char key) {
  * Funkciu implementujte iteratívne pomocou zásobníku uzlov a bez použitia
  * vlastných pomocných funkcií.
  */
-void bst_dispose(bst_node_t **tree) {
+void bst_dispose(bst_node_t **tree)
+{
 }
 
 /*
@@ -102,7 +131,8 @@ void bst_dispose(bst_node_t **tree) {
  * Funkciu implementujte iteratívne pomocou zásobníku uzlov a bez použitia
  * vlastných pomocných funkcií.
  */
-void bst_leftmost_preorder(bst_node_t *tree, stack_bst_t *to_visit) {
+void bst_leftmost_preorder(bst_node_t *tree, stack_bst_t *to_visit)
+{
 }
 
 /*
@@ -113,7 +143,8 @@ void bst_leftmost_preorder(bst_node_t *tree, stack_bst_t *to_visit) {
  * Funkciu implementujte iteratívne pomocou funkcie bst_leftmost_preorder a
  * zásobníku uzlov bez použitia vlastných pomocných funkcií.
  */
-void bst_preorder(bst_node_t *tree) {
+void bst_preorder(bst_node_t *tree)
+{
 }
 
 /*
@@ -125,7 +156,8 @@ void bst_preorder(bst_node_t *tree) {
  * Funkciu implementujte iteratívne pomocou zásobníku uzlov a bez použitia
  * vlastných pomocných funkcií.
  */
-void bst_leftmost_inorder(bst_node_t *tree, stack_bst_t *to_visit) {
+void bst_leftmost_inorder(bst_node_t *tree, stack_bst_t *to_visit)
+{
 }
 
 /*
@@ -136,7 +168,8 @@ void bst_leftmost_inorder(bst_node_t *tree, stack_bst_t *to_visit) {
  * Funkciu implementujte iteratívne pomocou funkcie bst_leftmost_inorder a
  * zásobníku uzlov bez použitia vlastných pomocných funkcií.
  */
-void bst_inorder(bst_node_t *tree) {
+void bst_inorder(bst_node_t *tree)
+{
 }
 
 /*
@@ -150,7 +183,8 @@ void bst_inorder(bst_node_t *tree) {
  * vlastných pomocných funkcií.
  */
 void bst_leftmost_postorder(bst_node_t *tree, stack_bst_t *to_visit,
-                            stack_bool_t *first_visit) {
+                            stack_bool_t *first_visit)
+{
 }
 
 /*
@@ -161,5 +195,6 @@ void bst_leftmost_postorder(bst_node_t *tree, stack_bst_t *to_visit,
  * Funkciu implementujte iteratívne pomocou funkcie bst_leftmost_postorder a
  * zásobníkov uzlov a bool hodnôt bez použitia vlastných pomocných funkcií.
  */
-void bst_postorder(bst_node_t *tree) {
+void bst_postorder(bst_node_t *tree)
+{
 }
