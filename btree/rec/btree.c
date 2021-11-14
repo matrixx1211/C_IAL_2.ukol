@@ -101,12 +101,17 @@ void bst_insert(bst_node_t **tree, char key, int value)
  */
 void bst_replace_by_rightmost(bst_node_t *target, bst_node_t **tree)
 {
-  //target je ukazatel do stromu
-  bst_node_t node;
-  /* if ((*tree)->key == target->key)
-  {
+  if ((*tree) != NULL && target != NULL)                 //pokud nejsou NULL
+  {                                                      //
+    if ((*tree)->right == NULL)                          //pokud vpravo ještě něco je
+    {                                                    //
+      target->key = (*tree)->key;                        //nahradím klíč
+      target->value = (*tree)->value;                    //a hodnotu
+      bst_delete(tree, target->key);                     //uvolním nejpravější
+    }                                                    //
+    else                                                 //jinak
+      bst_replace_by_rightmost(target, &(*tree)->right); //jdu doprava
   }
-    bst_replace_by_rightmost(); */
 }
 
 /*
@@ -123,6 +128,41 @@ void bst_replace_by_rightmost(bst_node_t *target, bst_node_t **tree)
  */
 void bst_delete(bst_node_t **tree, char key)
 {
+  if ((*tree) != NULL)                                            //pokud ve stromu něco je
+  {                                                               //
+    if ((*tree)->key > key)                                       //rušený klíč je vlevo
+    {                                                             //
+      bst_delete(&(*tree)->left, key);                            //jdu doleva
+    }                                                             //
+    else if ((*tree)->key < key)                                  //rušený klíč je vpravo
+    {                                                             //
+      bst_delete(&(*tree)->right, key);                           //jdu doprava
+    }                                                             //
+    else if ((*tree)->left == NULL && (*tree)->right == NULL)     //pokud rušený klíč nemá potomka
+    {                                                             //
+      free((*tree));                                              //uvolním
+      (*tree) = NULL;                                             //
+    }                                                             //
+    else if ((*tree)->left != NULL && (*tree)->right != NULL)     //pokud má oba pomotky
+    {                                                             //
+      if ((*tree)->left->right != NULL)                           //pokud vlevo pravý není null
+        bst_replace_by_rightmost((*tree), &(*tree)->left->right); //nejpravější uzel levého podstromu
+      else                                                        //jinak
+        bst_replace_by_rightmost((*tree), &(*tree)->left);        //levý prvek
+    }                                                             //
+    else if ((*tree)->left == NULL)                               //pokud nemá levého potomka
+    {                                                             //
+      bst_node_t *node = (*tree);                                 //
+      (*tree) = (*tree)->right;                                   //
+      free(node);                                                 //
+    }                                                             //
+    else                                                          //pokud nemá pravého potmka
+    {                                                             //
+      bst_node_t *node = (*tree);                                 //pomocná proměnná
+      (*tree) = (*tree)->left;                                    //nastavím následující
+      free(node);                                                 //uvolním
+    }                                                             //
+  }                                                               //
 }
 
 /*

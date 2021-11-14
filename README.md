@@ -15,19 +15,22 @@
 - [x] -> bst_init .................... inicializace stromu
 - [x] -> bst_insert .................. vkládání listu do stromu
 - [x] -> bst_search .................. vyhledávání listu ve stromu
-- [ ] -> bst_replace_by_rightmost .... nahradí uzel nejpravějšího potomka
-- [ ] -> bst_delete .................. odstranění listu ve stromu
+- [x] -> bst_replace_by_rightmost .... nahradí uzel nejpravějšího potomka
+- [x] -> bst_delete .................. odstranění listu ve stromu
 - [x] -> bst_dispose ................. zrušení celého stromu
 - [x] -> bst_preorder ................ preorder průchod stromem
 - [x] -> bst_inorder ................. inorder průchod stromem
 - [x] -> bst_postorder ............... postorder průchod stromem
 ### BVS - iteračně
 - [x] -> bst_init .................... inicializace stromu
-- [ ] -> bst_insert .................. vkládání listu do stromu
-- [ ] -> bst_search .................. vyhledávání listu ve stromu
-- [ ] -> bst_replace_by_rightmost .... nahradí uzel nejpravějšího potomka
-- [ ] -> bst_delete .................. odstranění listu ve stromu
-- [ ] -> bst_dispose ................. zrušení celého stromu
-- [ ] -> bst_preorder ................ preorder průchod stromem
-- [ ] -> bst_inorder ................. inorder průchod stromem
-- [ ] -> bst_postorder ............... postorder průchod stromem
+- [x] -> bst_insert .................. vkládání listu do stromu
+- [x] -> bst_search .................. vyhledávání listu ve stromu
+- [x] -> bst_replace_by_rightmost .... nahradí uzel nejpravějšího potomka
+- [x] -> bst_delete .................. odstranění listu ve stromu
+- [x] -> bst_dispose ................. zrušení celého stromu
+- [x] -> bst_preorder ................ preorder průchod stromem
+- [x] -> bst_leftmost_preorder ....... preorder nejlevější
+- [x] -> bst_inorder ................. inorder průchod stromem
+- [x] -> bst_leftmost_inorder ........ inorder nejlevější
+- [x] -> bst_postorder ............... postorder průchod stromem
+- [x] -> bst_leftmost_postorder ...... postorder nejlevější
